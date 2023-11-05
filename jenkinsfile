@@ -1,26 +1,21 @@
-pipeline{
-    agent any 
-    tools{
-        maven 'Maven'
+pipeline {
+    agent any
+    
+    tools {
+        maven "Maven"
     }
-
-    stages{
+    
+    stages {
         stage('git'){
-            steps{
-                git branch: 'main', url: 'https://github.com/ofekbarel/Project3'
+            steps {
+                git branch: 'main', url: 'https://github.com/ofekbarel/FirstProject'
             }
         }
         
-        stage ('build'){
-            steps{
-                bat 'mvn clean install'
+        stage('build'){
+            steps {
+                bat "mvn clean install"
             }
-            post{
-                success{
-                    echo "success ofek project build"
-                }    
-            }   
-
         }
     }
-}           
+}       
